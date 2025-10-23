@@ -1,7 +1,7 @@
 [project]
 name = "openai-chatbot"
 version = "0.1.0"
-description = "使用 OpenAI Chat Completions API 实现的聊天机器人"
+description = "A chatbot implementation using OpenAI Chat Completions API"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [

@@ -1,160 +1,160 @@
 # OpenAI Chatbot
 
-一个使用 OpenAI Chat Completions API 实现的简单聊天机器人。
+A simple chatbot implementation using OpenAI Chat Completions API.
 
-## 功能特点
+## Features
 
-- 🤖 与 OpenAI GPT 模型进行对话
-- 💬 保持完整的对话历史
-- 🔄 支持清除对话历史
-- 📝 可查看对话记录
-- 🎯 支持自定义系统提示词
-- ⚙️ 可配置使用不同的模型
-- ⚡ 使用 uv 进行快速依赖管理
+- 🤖 Chat with OpenAI GPT models
+- 💬 Maintain complete conversation history
+- 🔄 Support clearing conversation history
+- 📝 View conversation records
+- 🎯 Support custom system prompts
+- ⚙️ Configurable to use different models
+- ⚡ Use uv for fast dependency management
 
-## 安装
+## Installation
 
-### 前置要求
+### Prerequisites
 
-安装 uv（如果还未安装）：
+Install uv (if not already installed):
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-或使用 Homebrew (macOS/Linux)：
+Or use Homebrew (macOS/Linux):
 ```bash
 brew install uv
 ```
 
-### 项目设置
+### Project Setup
 
-1. 克隆或下载此项目
+1. Clone or download this project
 
-2. 使用 uv 同步依赖（自动创建虚拟环境）：
+2. Use uv to sync dependencies (automatically creates virtual environment):
 ```bash
 uv sync
 ```
 
-3. 设置 OpenAI API 密钥：
+3. Set OpenAI API key:
 ```bash
 export OPENAI_API_KEY='your-api-key-here'
 ```
 
-或者在代码中直接传入 API 密钥。
+Or pass the API key directly in the code.
 
-## 使用方法
+## Usage
 
-### 方式1：使用 uv 运行（推荐）
+### Method 1: Run with uv (recommended)
 
 ```bash
 uv run chatbot
 ```
 
-或者直接运行脚本：
+Or run the script directly:
 ```bash
 uv run python chatbot.py
 ```
 
-### 方式2：传统方式运行
+### Method 2: Run traditionally
 
 ```bash
 python chatbot.py
 ```
 
-然后按照提示输入消息即可开始对话。
+Then follow the prompts to enter messages and start a conversation.
 
-### 方式3：在代码中使用
+### Method 3: Use in code
 
 ```python
 from chatbot import ChatBot
 
-# 创建聊天机器人实例
+# Create chatbot instance
 bot = ChatBot()
 
-# 开始对话
-response = bot.chat("你好！")
+# Start conversation
+response = bot.chat("Hello!")
 print(response)
 
-# 继续对话（保持上下文）
-response = bot.chat("你能帮我做什么？")
+# Continue conversation (maintains context)
+response = bot.chat("What can you help me with?")
 print(response)
 
-# 清除对话历史
+# Clear conversation history
 bot.clear_history()
 
-# 使用自定义系统提示词
+# Use custom system prompt
 response = bot.chat(
-    "介绍一下你自己",
-    system_prompt="你是一个专业的Python编程助手"
+    "Introduce yourself",
+    system_prompt="You are a professional Python programming assistant"
 )
 print(response)
 ```
 
-## 使用 uv 的优势
+## Advantages of using uv
 
-- ⚡ **极快的依赖安装速度**：比 pip 快 10-100 倍
-- 🔒 **自动锁定依赖**：生成 `uv.lock` 确保可重现的构建
-- 🎯 **自动虚拟环境管理**：无需手动创建和激活虚拟环境
-- 📦 **统一的项目管理**：使用 `pyproject.toml` 管理所有配置
-- 🚀 **一键运行**：使用 `uv run` 自动处理环境
+- ⚡ **Extremely fast dependency installation**: 10-100x faster than pip
+- 🔒 **Automatic dependency locking**: Generates `uv.lock` for reproducible builds
+- 🎯 **Automatic virtual environment management**: No need to manually create and activate virtual environments
+- 📦 **Unified project management**: All configuration in `pyproject.toml`
+- 🚀 **One-click execution**: `uv run` automatically handles environment setup
 
-### 命令说明
+### Command Instructions
 
-在交互式模式中，可以使用以下命令：
+In interactive mode, you can use the following commands:
 
-- 输入任意文本：发送消息给 AI
-- `quit` 或 `exit`：退出程序
-- `clear`：清除对话历史
-- `history`：查看完整对话历史
+- Enter any text: Send message to AI
+- `quit` or `exit`: Exit the program
+- `clear`: Clear conversation history
+- `history`: View complete conversation history
 
-## 配置选项
+## Configuration Options
 
-创建 ChatBot 实例时可以传入以下参数：
+When creating a ChatBot instance, you can pass the following parameters:
 
-- `api_key`: OpenAI API 密钥（可选，默认从环境变量读取）
-- `model`: 使用的模型名称（默认为 "gpt-3.5-turbo"）
+- `api_key`: OpenAI API key (optional, defaults to reading from environment variable)
+- `model`: Model name to use (defaults to "gpt-3.5-turbo")
 
-示例：
+Example:
 ```python
 bot = ChatBot(api_key="your-key", model="gpt-4")
 ```
 
-## 支持的模型
+## Supported Models
 
-- gpt-3.5-turbo（默认，速度快，成本低）
-- gpt-4（更强大但成本较高）
+- gpt-3.5-turbo (default, fast and cost-effective)
+- gpt-4 (more powerful but higher cost)
 - gpt-4-turbo
-- 其他 OpenAI 聊天模型
+- Other OpenAI chat models
 
-## uv 常用命令
+## Common uv Commands
 
 ```bash
-# 同步/安装依赖
+# Sync/install dependencies
 uv sync
 
-# 添加新依赖
+# Add new dependency
 uv add package-name
 
-# 移除依赖
+# Remove dependency
 uv remove package-name
 
-# 运行脚本
+# Run script
 uv run python chatbot.py
 
-# 运行定义的命令（在 pyproject.toml 中定义）
+# Run defined command (defined in pyproject.toml)
 uv run chatbot
 
-# 更新依赖
+# Update dependencies
 uv lock --upgrade
 ```
 
-## 注意事项
+## Notes
 
-- 需要有效的 OpenAI API 密钥
-- API 调用会产生费用
-- 对话历史会占用 token，建议定期清除
-- 网络连接需要能访问 OpenAI API
+- Requires a valid OpenAI API key
+- API calls incur charges
+- Conversation history consumes tokens, clear regularly
+- Network connection must be able to access OpenAI API
 
-## 许可证
+## License
 
 MIT License
